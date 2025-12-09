@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Book;
-import com.example.demo.service.BookService;
+import com.example.demo.service.interfaces.IBookService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +11,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/books")
 public class BookController {
-    private final BookService bookService;
+    private final IBookService bookService;
 
-    public BookController(BookService bookService) {
+    public BookController(IBookService bookService) {
         this.bookService = bookService;
     }
 

@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Author;
-import com.example.demo.service.AuthorService;
+import com.example.demo.service.interfaces.IAuthorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +11,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/authors")
 public class AuthorController {
-    private final AuthorService authorService;
+    private final IAuthorService authorService;
 
-    public AuthorController(AuthorService authorService) {
+    public AuthorController(IAuthorService authorService) {
         this.authorService = authorService;
     }
 

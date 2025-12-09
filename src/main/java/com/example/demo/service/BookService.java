@@ -3,13 +3,14 @@ package com.example.demo.service;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.Book;
 import com.example.demo.repository.BookRepository;
+import com.example.demo.service.interfaces.IBookService;
 import com.example.demo.validator.BookValidator;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class BookService {
+public class BookService implements IBookService {
     private final BookRepository bookRepository;
     private final BookValidator bookValidator;
 
@@ -28,7 +29,7 @@ public class BookService {
     }
 
     public Book createBook(Book book) {
-        bookValidator.validate(book.getTitle(), book.getAuthorId(), book.getCategoryId());
+        bookValidator.validate(book);
         book.setId(null);
         return bookRepository.save(book);
     }
@@ -37,7 +38,7 @@ public class BookService {
         if (!bookRepository.existsById(id)) {
             throw new ResourceNotFoundException("Book with id " + id + " not found");
         }
-        bookValidator.validate(book.getTitle(), book.getAuthorId(), book.getCategoryId());
+        bookValidator.validate(book);
         book.setId(id);
         return bookRepository.save(book);
     }

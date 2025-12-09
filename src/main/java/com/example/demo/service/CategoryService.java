@@ -3,13 +3,14 @@ package com.example.demo.service;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.Category;
 import com.example.demo.repository.CategoryRepository;
+import com.example.demo.service.interfaces.ICategoryService;
 import com.example.demo.validator.NameValidator;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CategoryService {
+public class CategoryService implements ICategoryService {
     private final CategoryRepository categoryRepository;
     private final NameValidator nameValidator;
 
