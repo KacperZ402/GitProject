@@ -3,13 +3,14 @@ package com.example.demo.service;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.Author;
 import com.example.demo.repository.AuthorRepository;
+import com.example.demo.service.interfaces.IAuthorService;
 import com.example.demo.validator.NameValidator;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class AuthorService {
+public class AuthorService implements IAuthorService {
     private final AuthorRepository authorRepository;
     private final NameValidator nameValidator;
 
